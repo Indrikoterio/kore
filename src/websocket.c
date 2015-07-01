@@ -42,7 +42,7 @@ u_int64_t	kore_websocket_maxframe = 16384;
 static int	websocket_recv_frame(struct netbuf *);
 static int	websocket_recv_opcode(struct netbuf *);
 static void	websocket_disconnect(struct connection *);
-static void	websocket_frame_build(struct kore_buf *, u_int8_t,
+void	websocket_frame_build(struct kore_buf *, u_int8_t,
 		    const void *, size_t);
 
 void
@@ -149,7 +149,7 @@ kore_websocket_broadcast(struct connection *src, u_int8_t op, const void *data,
 	kore_buf_free(frame);
 }
 
-static void
+void
 websocket_frame_build(struct kore_buf *frame, u_int8_t op, const void *data,
     size_t len)
 {
