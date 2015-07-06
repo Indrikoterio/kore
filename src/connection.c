@@ -396,6 +396,7 @@ kore_connection_start_idletimer(struct connection *c)
 {
 	kore_debug("kore_connection_start_idletimer(%p)", c);
 
+	if (c->proto == CONN_PROTO_WEBSOCKET) return;
 	c->flags |= CONN_IDLE_TIMER_ACT;
 	c->idle_timer.start = kore_time_ms();
 }
